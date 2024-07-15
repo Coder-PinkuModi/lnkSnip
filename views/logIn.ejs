@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up/Login</title>
+    <link rel="stylesheet" href="/stylesheets/login.css">
+</head>
+
+<body>
+    <div class="container">
+        <div id="login-section" class="form-section hidden">
+            <h2>Login</h2>
+            <% if (locals.error) { %>
+                <p><%= locals.error %></p>
+              <% } %>
+            <form method="POST" action="/urlshort/login">
+                <input type="text" placeholder="Email or Phone Number" name="emailNumber" required>
+                <input type="password" placeholder="Password" name="password" required>
+                <button type="submit">Login</button>
+
+                <!-- <p class="break">OR</p>
+
+                <button class="google-login">Login with Google</button> -->
+                
+                <!-- <p class="forgot-pass"><a href="pass-change.html">Forgot Password ?</a></p> -->
+                <p class="signup">New here ? Start by creating your account <a href="/signup">sign up</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+
+</html>

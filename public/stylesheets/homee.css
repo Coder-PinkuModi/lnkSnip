@@ -1,0 +1,400 @@
+* {
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    position: relative;
+    align-items: center;
+    background-color: #f9f233 !important;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.navMain{
+    background-image: url("/images/bg-img.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 80px;
+    position: relative;
+}
+
+.navbar-brand img {
+    height: 50px;
+}
+
+/* hamburger menu to light orange */
+.navbar-toggler {
+    border-color: #f9aa33;
+    /* Border color of the button */
+    background-color: #f9aa33;
+    /* Background color of the button */
+}
+
+.navbar-toggler-icon {
+    background-color: #f9aa33;
+    /* Light orange color for the hamburger menu icon */
+}
+
+.navbar {
+    position: fixed;
+    font-size: 16px;
+    padding: 0px 0px;
+    box-shadow: 0 4px 2px -2px rgba(57, 55, 55, 0.7);
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.codeminess-logo {
+    height: 50px;
+    margin: 0px 50px;
+}
+
+.navbar-nav {
+    margin: 0 10px;
+}
+
+.nav-link {
+    color: white !important;
+    /* Ensure text color is white */
+    font-weight: 500;
+    margin: 10px 24px;
+    cursor: pointer;
+}
+
+.nav-link:hover {
+    color: #f9aa33 !important;
+    /* Change text color on hover */
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+.nav-link.active {
+    color: #f9aa33 !important;
+    /* Active link text color */
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+
+
+.paragraphs {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    font-family: "Josefin Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: large;
+    color: #f9aa33;
+    border: 1px solid #344955;
+    border-radius: 20px;
+    padding: 5vh 180px;
+    margin: 50px 100px;
+    background-color: #344955;
+}
+
+.tutorial-paragraph {
+    font-family: "Josefin Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: large;
+    color: #f9aa33;
+    border: 1px solid #344955;
+    border-radius: 20px;
+    
+    background-color: #344955;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.tutorial-paragraph h1 {
+    width: 100%;
+}
+
+.paragraphs ul {
+    flex: 1;
+    min-width: 200px;
+}
+
+.tutorial-paragraph .card {
+    flex: 1;
+    min-width: 300px;
+    margin-left: 20px;
+}
+
+@media (max-width: 450x) {
+    .tutorial-paragraph {
+        flex-direction: column;
+    }
+
+    .tutorial-paragraph .card {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+    .card {
+        width: 50rem;
+    }
+}
+
+.url-heading {
+    font-size: 3vw;
+    font-family: "Playwrite IT Moderna", cursive;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: #f9aa33;
+    padding: 30px 0px;
+
+
+}
+
+.url-box {
+    color: #f9aa33 !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid #344955;
+    border-radius: 20px;
+    padding: 5vh 10px;
+    margin: 50px 100px;
+    align-items: center !important;
+    text-align: center;
+    background-color: #344955;
+}
+
+#input-label {
+    font-family: "Josefin Slab", serif;
+    font-weight: 700;
+    font-size: 2vw;
+    /* Change font size */
+    color: #f9aa33 !important;
+    /* Change text color */
+    margin-bottom: 8px;
+    /* Add some space below the label */
+    display: block;
+    /* Make sure the label is displayed as a block element */
+}
+
+/* Style for the input box */
+.url-input {
+    width: 100%;
+    /* Full width */
+    max-width: 400px;
+    /* Max width for better control */
+    padding: 10px;
+    /* Padding inside the input */
+    font-size: 16px;
+    /* Font size */
+    border: 3px solid #e6f51c;
+    /* Border style */
+    border-radius: 50px;
+    /* Rounded corners */
+    box-sizing: border-box;
+    /* Include padding and border in the element's total width and height */
+}
+
+.buttons {
+    font-size: large;
+    margin: 20px;
+    padding: 10px 40px;
+    border: 2px solid white;
+    border-radius: 50px;
+    width: 10rem;
+    background-color: #f9aa33;
+}
+
+/* history table  */
+.link-history {
+    width: 80%;
+    padding: 10px;
+    margin: 90px;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+}
+
+.link-history th,
+.link-history td {
+    border: 0px;
+    padding: 8px;
+    text-align: center;
+}
+
+.link-history th {
+    background-color: rgb(56, 56, 60);
+    color: white;
+}
+
+.link-history tr:nth-child(even) {
+    color: #000000;
+    background-color: #ffffff;
+}
+
+.link-history tr:nth-child(odd) {
+    color: #101010;
+    background-color: #e0e0de;
+}
+
+.link-history td a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.link-history td a:hover {
+    text-decoration: underline;
+}
+
+/*     contact us     */
+
+.container-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container-items {
+    margin: 0 1em;
+}
+
+.social-handles {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.social-handle-items {
+    margin: 0 0.5em;
+}
+
+.social-handle-items img {
+    width: 50px;
+    /* Adjust the size to match the text */
+    height: 50px;
+    /* Ensure the aspect ratio is maintained */
+}
+
+/* Add media query for small screen view */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background-color: #333333;
+        /* Solid dark grey background color */
+    }
+
+    .nav-link {
+        color: white !important;
+        /* White text color for links */
+        padding: 10px 10px !important;
+    }
+
+    .navbar-toggler {
+        border-width: 3px !important;
+        border-color: #f9aa00 !important;
+        /* Light orange border color */
+        background-color: white !important;
+        /* Light orange background color */
+    }
+
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 115, 0, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        /* Light orange color for the hamburger menu icon */
+    }
+
+    .url-heading {
+        padding-left: 10px;
+        font-size: 60px;
+        min-width: 100px;
+    }
+
+    .headings {
+        font-size: 2rem !important;
+    }
+
+    #input-label {
+        font-size: 1.5rem;
+    }
+
+    .paragraphs {
+        padding: 80px;
+    }
+
+}
+
+@media (max-width: 700px) {
+    .url-heading {
+        font-size: 40px;
+    }
+
+    .headings {
+        font-size: 1.5rem !important;
+    }
+
+    #input-label {
+        font-size: 1rem;
+    }
+
+    .url-input {
+        max-width: 70%;
+    }
+
+    .url-box,
+    .paragraphs {
+        margin: 8%;
+    }
+
+    .buttons {
+        max-width: fit-content;
+        margin: 20px 10px;
+    }
+
+    .paragraphs {
+        text-align: justify;
+        padding: 30px 30px;
+    }
+
+    .link-history {
+        width: 80%;
+        margin: 10px 10px;
+    }
+
+    .social-handle-items img {
+        width: 20px;
+        /* Adjust the size to match the text */
+        height: 20px;
+        /* Ensure the aspect ratio is maintained */
+    }
+}
+
+@media(max-width:450px) {
+    .buttons {
+        padding: 5px 20px;
+    }
+    .paragraphs{       
+        align-items: center;
+        font-size: 15px;
+    }
+    .tutorial-paragraph{
+        background-color: #f8f9fa;
+        font-size: 5px;
+    }
+    .tutorial-paragraph ul li video{
+        display: hidden;
+}
+}
