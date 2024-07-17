@@ -1,31 +1,39 @@
 import mongoose from "mongoose";
 import usermodel from "../models/usersmodel.js";
 import modelss from "../models/models.js";
+import bcrypt from "bcrypt"
 import { setUser } from "../service/auth.js"
 
 async function createUser(req, res) {
   try {
-    const { name, emailNumber, password, reEnterPassword } = req.body;
+    const { name, email, password, reEnterPassword } = req.body;
 
-    const existingemaiNumber = await usermodel.findOne({
-      emailNumber: emailNumber,
+    const existingemail = await usermodel.findOne({
+      email: email,
     });
 
-    if (existingemaiNumber) {
+    if (existingemail) {
       return res.render("signUp.ejs", {
         error: "This email is already been used",
       });
     }
     if (password == reEnterPassword) {
-      await usermodel.create({
+
+      const saltRounds = 10;
+      const plainPassword = password;
+
+    const hashedPassword = await bcrypt.hash(plainPassword, saltRounds);
+
+
+      await usermodel.create({ // storing data in MongoDb
         name:name,
-        emailNumber:emailNumber,
-        password:password,
+        email:email,
+        password:hashedPassword,
       })
       res.status(201).render("signUpsuccessful.ejs");
     } else {
       res.render("signUp", {
-        error: "Your passwords doesn't match with each other",
+        error: "Your entered passwords doesn't match",
       });
     }
   } catch (error) {
@@ -38,21 +46,38 @@ async function createUser(req, res) {
 }
 
 async function loginRoute(req, res) {
-  const emailNumber = req.body.emailNumber;
+  const email = req.body.email;
   const password = req.body.password;
-  if( !emailNumber || !password) return res.redirect("/login")
+  if( !email || !password) return res.redirect("/login")
   try{
-  const userlogged = await usermodel.findOne({ emailNumber: emailNumber, password: password });
+  const userlogged = await usermodel.findOne({ email: email});
   if (!userlogged) {
     // If no user found, handle the case (redirect, render an error page, etc.)
     return res.render("logIn.ejs",{
-      error:"Your email or phone number and password doesn't match"
+      error:"Invalid credentials provided"
     });
   }
+
+  const hashPassword= await bcrypt.compare(password,userlogged.password)
+  
+  console.log(hashPassword)
+  
+  if (!hashPassword) {
+    return res.render("logIn.ejs", {
+      error: "Your email or phone number and password don't match",
+    });
+  }
+  
+  if(hashPassword){
   const token=setUser(userlogged)
   res.cookie("uid",token)
   console.log(userlogged)
   res.redirect("/");
+  } else{
+    return res.render("logIn.ejs",{
+      error:"Provided Password is wrong"
+    })
+  }
 } catch (err) {
     console.error(err);
     res.status(500).send('Internal Server Error');

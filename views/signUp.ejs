@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SignUp Page</title>
     <link rel="stylesheet" href="/stylesheets/signup.css">
 </head>
 <body>
@@ -11,11 +11,11 @@
         <div id="signup-section" class="form-section ">
             <h2>Sign Up</h2>
             <% if (locals.error) { %>
-                <p><%= locals.error %></p>
+                <p style="color:white"><%= locals.error %></p>
               <% } %>
             <form method="POST" action="/urlshort/signup">
                 <input type="text" placeholder="fullName " name="name" required>
-                <input type="text" placeholder="Email or Phone Number" name="emailNumber" required>
+                <input type="email" placeholder="Enter valid email" name="email" required>
                 <input type="password" placeholder="Create Password" id="password" name="password" required>
                 <input type="password" placeholder="Confirm Password" id="reEnterPassword" name="reEnterPassword" required>
                 <button type="submit">Sign Up</button>

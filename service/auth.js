@@ -4,7 +4,7 @@ const secretKey="Pkimoidn@0909$"
 function setUser(user){
     return jwt.sign({
         _id:user._id,
-        email:user.emailNumber,
+        email:user.email,
     },secretKey)
 }
 
