@@ -11,7 +11,7 @@
         <div id="signup-section" class="form-section ">
             <h2>Sign Up</h2>
             <% if (locals.error) { %>
-                <p style="color:white"><%= locals.error %></p>
+                <p style="color:rgb(230, 71, 71)"><%= locals.error %></p>
               <% } %>
             <form method="POST" action="/urlshort/signup">
                 <input type="text" placeholder="fullName " name="name" required>

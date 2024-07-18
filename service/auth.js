@@ -1,5 +1,9 @@
+import { configDotenv } from "dotenv";
+configDotenv();
+
+
 import jwt from "jsonwebtoken";
-const secretKey="Pkimoidn@0909$"
+const secretKey=process.env.SecretKey
 
 function setUser(user){
     return jwt.sign({

@@ -1,6 +1,4 @@
-import mongoose from "mongoose";
 import usermodel from "../models/usersmodel.js";
-import modelss from "../models/models.js";
 import bcrypt from "bcrypt"
 import { setUser } from "../service/auth.js"
 
@@ -60,7 +58,6 @@ async function loginRoute(req, res) {
 
   const hashPassword= await bcrypt.compare(password,userlogged.password)
   
-  console.log(hashPassword)
   
   if (!hashPassword) {
     return res.render("logIn.ejs", {

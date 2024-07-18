@@ -13,7 +13,7 @@
         <div id="login-section" class="form-section hidden">
             <h2>Login</h2>
             <% if (locals.error) { %>
-                <p style="color:white"><%= locals.error %></p>
+                <p style="color:rgb(230, 71, 71)"><%= locals.error %></p>
               <% } %>
             <form method="POST" action="/urlshort/login">
                 <input type="email" placeholder="Enter email" name="email" required>
@@ -24,7 +24,7 @@
 
                 <button class="google-login">Login with Google</button> -->
                 
-                <p class="forgot-pass"><a href="pass-change.html">Forgot Password ?</a></p>
+                <p class="forgot-pass"><a href="/forgotPassword">Forgot Password ?</a></p>
                 <p class="signup">New here ? Start by creating your account <a href="/signup">sign up</a></p>
             </form>
         </div>

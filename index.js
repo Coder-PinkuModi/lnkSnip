@@ -4,7 +4,7 @@ import cookieParser from "cookie-parser"
 import mongoDBconnect from "./connect.js"
 import routerLink from "./routes/route.js"
 import { checkAuth } from "./middleware/authenticate.js";
-import {homepage, signinPage, signupPage} from "./routes/staticrouter.js"
+import {homepage, signinPage, signupPage, forgotPasswordPage} from "./routes/staticrouter.js"
 import { fileURLToPath } from 'url';
 const port=8000
 const app= express()
@@ -28,9 +28,11 @@ mongoDBconnect("mongodb://127.0.0.1:27017/urlShortner")
 
 app.get("/",checkAuth,homepage)
 
+app.get("/signup",signupPage)
+
 app.get("/login",signinPage)
 
-app.get("/signup",signupPage)
+app.get("/forgotPassword",forgotPasswordPage)
 
 app.use("/urlshort",routerLink)
 

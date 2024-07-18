@@ -33,4 +33,8 @@ async function signupPage(req,res){
     return res.render("signUp")
 }
 
-export { homepage, signinPage, signupPage }
+async function forgotPasswordPage(req,res){
+    return res.render("forgotPassword")
+}
+
+export { homepage, signinPage, signupPage , forgotPasswordPage}
