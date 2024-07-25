@@ -19,7 +19,7 @@ async function sendVerificationEmail(email, verificationToken) {
     });
 
     // Define email content
-    const verificationLink = `http://${process.env.WEBSITE_DOOMAIN}/verifyEmail/${verificationToken}`;
+    const verificationLink = `http://${process.env.WEBSITE_DOOMAIN}/api/verifyEmail/${verificationToken}`;
     const mail = {
       from: '"LnkSnip "lnksnip.dev@gmail.com', // Replace with your sender information
       to: email,

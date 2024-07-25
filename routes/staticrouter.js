@@ -7,7 +7,7 @@ async function homepage(req,res){
   try {
     const user = req.user;
     if (!user) {
-        return res.render("homee");
+        return res.render("index");
     }
 
     const urls = await modelss.find({ createdBy: user._id });
@@ -15,8 +15,8 @@ async function homepage(req,res){
 
     const filteredUrls = urls.filter(url => url.createdBy);
 
-    if(!urls) return res.render("homee")
-    return res.render("homee", {
+    if(!urls) return res.render("index")
+    return res.render("index", {
         urls: filteredUrls,
         user:user.name
     });

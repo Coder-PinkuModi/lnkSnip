@@ -15,7 +15,7 @@
             <% if (locals.error) { %>
                 <p style="color:rgb(230, 71, 71)"><%= locals.error %></p>
               <% } %>
-            <form method="POST" action="/lnk-snip.vercel.app/login">
+            <form method="POST" action="/api/login">
                 <input type="email" placeholder="Enter email" name="email" required>
                 <input type="password" placeholder="Password" name="password" required>
                 <button type="submit">Login</button>
@@ -23,8 +23,6 @@
                 <!-- <p class="break">OR</p>
 
                 <button class="google-login">Login with Google</button> -->
-                
-                <p class="forgot-pass"><a href="/forgotPassword">Forgot Password ?</a></p>
                 <p class="signup">New here ? Start by creating your account <a href="/signup">sign up</a></p>
             </form>
         </div>

@@ -21,10 +21,10 @@ app.use(cookieParser())
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 app.set("view engine","ejs")
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, '../public'));
 
 
 mongoDBconnect(process.env.MONGODB_URI)
@@ -44,6 +44,6 @@ app.get('/logout', (req, res) => {
     res.redirect('/');
 });
 
-app.use(`/${process.env.WEBSITE_Domain}`,routerLink)
+app.use(`/api`,routerLink)
 
 app.listen(port,()=>console.log("Server started at port 8000"))
