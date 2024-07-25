@@ -47,23 +47,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#Contacts">Contacts</a>
-            </li><% if (locals.name) { %>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Welcome, <%= locals.name %>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="userDropdown">
-                  <a class="dropdown-item" href="/logout">Sign Out</a>
-                </div>
-              </li>
-            <% } else { %>
-              <li class="nav-item">
-                <a class="nav-link" href="/signUp">Sign Up</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/login">Login</a>
-              </li>
-            <% } %>
+           
           </ul>
         </div>
       </nav>
@@ -96,35 +80,7 @@
       </div>
       </form>
 
-      <!-- Table containing the URLs -->
-       <% if (locals.urls) { %>
-        <table class="link-history">
-          <% if(urls && urls.length > 0) { %>
-          <thead>
-            <tr>
-              <th>S No.</th>
-              <th>Short Id</th>
-              <th>Url</th>
-              <th>Total Clicks</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% urls.forEach((url, index) => { %>
-            <tr>
-              <td><%= index + 1 %></td>
-              <td><%= url.shortId %></td>
-              <td><%= url.url %></td>
-              <td><%= url.clicks %></td>
-            </tr>
-            <% }); %>
-          </tbody>
-          <% } else { %>
-          <tr>
-            <td colspan="4">No URLs to show</td>
-          </tr>
-          <% } %>
-        </table>
-       <% } %>
+      
       
     </div>
 
