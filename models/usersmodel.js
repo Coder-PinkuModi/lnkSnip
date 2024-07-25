@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
 import { sendVerificationEmail } from "../service/emailVerify.js";
-import { generateVerificationEmailToken, verifyJWTEmail } from "../service/generateVerificationEmailToken.js"
+import { generateVerificationEmailToken } from "../service/emailJwtGenerateAndVerification.js"
 
 const userModels=new mongoose.Schema({
     name:{
@@ -16,7 +16,7 @@ const userModels=new mongoose.Schema({
         type:String,
         required: true,
     },
-    verified: { type: Boolean, default: false }
+    verified: { type: Boolean, default: false },
 },{timestamps:true})
 
 userModels.pre('save', async function(next) {

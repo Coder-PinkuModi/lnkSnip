@@ -1,11 +1,15 @@
+import { configDotenv } from "dotenv";
+configDotenv();
+
 import express from "express"
 import path from "path"
 import cookieParser from "cookie-parser"
 import mongoDBconnect from "./connect.js"
 import routerLink from "./routes/route.js"
 import { checkAuth } from "./middleware/authenticate.js";
-import {homepage, signinPage, signupPage, forgotPasswordPage} from "./routes/staticrouter.js"
+import {homepage, signinPage, signupPage} from "./routes/staticrouter.js"
 import { fileURLToPath } from 'url';
+
 const port=8000
 const app= express()
 
@@ -23,7 +27,7 @@ app.set("view engine","ejs")
 app.set('views', path.join(__dirname, 'views'));
 
 
-mongoDBconnect("mongodb://127.0.0.1:27017/urlShortner")
+mongoDBconnect(process.env.MONGODB_URI)
 
 
 app.get("/",checkAuth,homepage)
@@ -32,8 +36,14 @@ app.get("/signup",signupPage)
 
 app.get("/login",signinPage)
 
-app.get("/forgotPassword",forgotPasswordPage)
+app.get('/logout', (req, res) => {
+    // Clear the JWT token from cookies
+    res.clearCookie('jwt');
+    
+    // Redirect to home or login page
+    res.redirect('/');
+});
 
-app.use("/urlshort",routerLink)
+app.use(`/${process.env.WEBSITE_Domain}`,routerLink)
 
 app.listen(port,()=>console.log("Server started at port 8000"))

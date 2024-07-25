@@ -7,7 +7,7 @@ const secretKey=process.env.SecretKeyEmailVerify
 function generateVerificationEmailToken(email){
     return jwt.sign({
         email:email,
-    },secretKey)
+    },secretKey,{ expiresIn: '24h' })
 }
 
 async function verifyJWTEmail(token) {

@@ -18,6 +18,7 @@ async function homepage(req,res){
     if(!urls) return res.render("homee")
     return res.render("homee", {
         urls: filteredUrls,
+        user:user.name
     });
 } catch (error) {
     console.error('Error fetching URLs:', error);
@@ -33,8 +34,5 @@ async function signupPage(req,res){
     return res.render("signUp")
 }
 
-async function forgotPasswordPage(req,res){
-    return res.render("forgotPassword")
-}
 
-export { homepage, signinPage, signupPage , forgotPasswordPage}
+export { homepage, signinPage, signupPage }

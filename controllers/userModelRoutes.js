@@ -17,7 +17,7 @@ async function createUser(req, res) {
     }
     if (password == reEnterPassword) {
 
-      const saltRounds = 10;
+      const saltRounds = process.env.SALTROUNDSFORPASSWORDHASING;
       const plainPassword = password;
 
     const hashedPassword = await bcrypt.hash(plainPassword, saltRounds);

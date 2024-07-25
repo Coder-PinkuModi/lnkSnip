@@ -47,13 +47,23 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#Contacts">Contacts</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/signUp ">Sign Up</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/login">Login</a>
-            </li>
+            </li><% if (locals.name) { %>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Welcome, <%= locals.name %>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="userDropdown">
+                  <a class="dropdown-item" href="/logout">Sign Out</a>
+                </div>
+              </li>
+            <% } else { %>
+              <li class="nav-item">
+                <a class="nav-link" href="/signUp">Sign Up</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+              </li>
+            <% } %>
           </ul>
         </div>
       </nav>
@@ -72,7 +82,7 @@
     <div class="url-box">
       <h2 class="url-heading">LnkSnip</h2>
       <!-- Form rendering -->
-      <form method="POST" action="/urlshort">
+      <form method="POST" action="/lnk-snip.vercel.app/createId">
         <label for="url-input" id="input-label">Enter your link here :</label>
         <input
           type="text"
