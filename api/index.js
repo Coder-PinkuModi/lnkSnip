@@ -4,10 +4,10 @@ configDotenv();
 import express from "express"
 import path from "path"
 import cookieParser from "cookie-parser"
-import mongoDBconnect from "./connect.js"
-import routerLink from "./routes/route.js"
-import { checkAuth } from "./middleware/authenticate.js";
-import {homepage, signinPage, signupPage} from "./routes/staticrouter.js"
+import mongoDBconnect from "../connect.js"
+import routerLink from "../routes/route.js"
+import { checkAuth } from "../middleware/authenticate.js";
+import {homepage, signinPage, signupPage} from "../routes/staticrouter.js"
 import { fileURLToPath } from 'url';
 
 const port=8000
