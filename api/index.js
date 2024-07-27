@@ -10,7 +10,7 @@ import { checkAuth } from "../middleware/authenticate.js";
 import {homepage, signinPage, signupPage} from "../routes/staticrouter.js"
 import { fileURLToPath } from 'url';
 
-const port=8000
+const port=process.env.PORT || 3000
 const app= express()
 
 app.use(express.json())
@@ -30,7 +30,7 @@ app.set('views', path.join(__dirname, '../public'));
 mongoDBconnect(process.env.MONGODB_URI)
 
 
-app.get("/",checkAuth,homepage)
+app.get("/", checkAuth, homepage)
 
 app.get("/signup",signupPage)
 
