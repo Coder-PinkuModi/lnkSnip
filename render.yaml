@@ -1,7 +1,8 @@
 services:
   - type: web
-    name: <your-service-name>
+    name: <lnkSnip>
     env: node
     plan: free
-    buildCommand: 'cd api && npm install'
-    startCommand: 'node api/index.js'
+    rootDir: api
+    buildCommand: 'npm install'
+    startCommand: 'node index.js'
