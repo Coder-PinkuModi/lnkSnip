@@ -20,7 +20,12 @@ async function createUser(req, res) {
       const saltRounds = process.env.SALTROUNDSFORPASSWORDHASING;
       const plainPassword = password;
 
-    const hashedPassword = await bcrypt.hash(plainPassword, saltRounds);
+    const hashedPassword = bcrypt.hash(plainPassword, saltRounds,function(err, hash) {
+      if (err) throw err;
+
+      // Save the hash in your password database
+      console.log('Hashed password:', hash);
+  });
 
 
       await usermodel.create({ // storing data in MongoDb
