@@ -5,14 +5,14 @@ import { nanoid } from "nanoid";
 async function createId(req, res) {
   try {
     const userUid = req.cookies?.uid;
-    if (!userUid) return res.redirect("api/login");
+    if (!userUid) return res.redirect("/login");
     const user = getUser(userUid);
-    if(!user) return res.redirect("api/login")
+    if(!user) return res.redirect("/login")
 
     const shortid = nanoid(9);
     const Url = req.body.url;
     const userId = user._id;
-    if (!userId) return res.redirect("api/login");
+    if (!userId) return res.redirect("/login");
     if (!Url) {
       return res.status(400).json("User didn't provide URL");
     }
