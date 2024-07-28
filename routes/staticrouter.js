@@ -27,7 +27,7 @@ async function homepage(req,res){
 }
 
 async function signinPage(req,res){
-    return res.render("login")
+    return res.render("logIn")
 }
 
 async function signupPage(req,res){
