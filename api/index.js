@@ -14,7 +14,7 @@ const port=process.env.PORT || 3000
 const app= express()
 
 app.use(express.json())
-app.use(express.urlencoded({extended:false}))
+app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())
 
 // Equivalent of __dirname in ES modules
@@ -38,7 +38,14 @@ app.get("/login",signinPage)
 
 app.get('/logout', (req, res) => {
     // Clear the JWT token from cookies
-    res.clearCookie('jwt');
+
+    console.log("user logged out")
+    res.clearCookie('jwt',{
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'strict',
+        path: '/',
+    });
     
     // Redirect to home or login page
     res.redirect('/');

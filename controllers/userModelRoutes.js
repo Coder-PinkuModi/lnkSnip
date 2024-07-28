@@ -1,10 +1,23 @@
+import { configDotenv } from "dotenv";
+configDotenv();
+
+
 import usermodel from "../models/usersmodel.js";
 import bcrypt from "bcrypt"
 import { setUser } from "../service/auth.js"
 
 async function createUser(req, res) {
   try {
+    
+    console.log(req.body)
     const { name, email, password, reEnterPassword } = req.body;
+    
+
+    if(!name || !email || !password || !reEnterPassword){
+      return res.render("signUp.ejs",{
+        error: "Please fill all the boxes",
+      })
+    }
 
     const existingemail = await usermodel.findOne({
       email: email,
@@ -17,16 +30,11 @@ async function createUser(req, res) {
     }
     if (password == reEnterPassword) {
 
-      const saltRounds = process.env.SALTROUNDSFORPASSWORDHASING;
+      const saltRounds = parseInt(process.env.SALTROUNDSFORPASSWORDHASING) || 10;
       const plainPassword = password;
 
-    const hashedPassword = bcrypt.hash(plainPassword, saltRounds,function(err, hash) {
-      if (err) throw err;
-
-      // Save the hash in your password database
-      console.log('Hashed password:', hash);
-  });
-
+    const hashedPassword = await bcrypt.hash(plainPassword, saltRounds);
+      console.log("Hashed Password:", hashedPassword);  
 
       await usermodel.create({ // storing data in MongoDb
         name:name,
@@ -36,7 +44,7 @@ async function createUser(req, res) {
       res.status(201).render("signUpsuccessful.ejs");
     } else {
       res.render("signUp", {
-        error: "Your entered passwords doesn't match",
+        error: "Your entered passwords don't match",
       });
     }
   } catch (error) {
