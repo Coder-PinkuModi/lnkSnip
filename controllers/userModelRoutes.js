@@ -78,18 +78,18 @@ async function loginRoute(req, res) {
   
   if(hashPassword){
 
-    if(!userlogged.verified) res.render("login",{error:"First verify your email, by the link send in mail"})
+    if(userlogged.verified==false){ return res.render("login",{error:"First verify your email, by the link send in mail"})}
 
   const token=setUser(userlogged)
   res.cookie("uid",token)
-  res.redirect("/");
+  return res.redirect("/");
   } else{
     return res.render("logIn.ejs",{
       error:"Provided Password is wrong"
     })
   }
 } catch (err) {
-    res.status(500).send('Internal Server Error');
+    return res.status(500).send('Internal Server Error');
   }
 }
 
