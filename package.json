@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd api && npm install",
-    "start": "node api/index.js"
+    "start": "nodemon api/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +22,7 @@
     "mongoose": "^8.4.4",
     "mongoose-nanoid": "^2.1.5",
     "nodemailer": "^6.9.14",
+    "nodemon": "^3.1.4",
     "rimraf": "^6.0.1",
     "util": "^0.12.5",
     "winston": "^3.13.1"
