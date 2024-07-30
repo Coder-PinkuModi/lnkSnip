@@ -9,7 +9,6 @@ import { setUser } from "../service/auth.js"
 async function createUser(req, res) {
   try {
     
-    console.log(req.body)
     const { name, email, password, reEnterPassword } = req.body;
     
 
@@ -34,7 +33,6 @@ async function createUser(req, res) {
       const plainPassword = password;
 
     const hashedPassword = await bcrypt.hash(plainPassword, saltRounds);
-      console.log("Hashed Password:", hashedPassword);  
 
       await usermodel.create({ // storing data in MongoDb
         name:name,
@@ -79,9 +77,11 @@ async function loginRoute(req, res) {
   }
   
   if(hashPassword){
+
+    if(!userlogged.verified) res.render("login",{error:"First verify your email, by the link send in mail"})
+
   const token=setUser(userlogged)
   res.cookie("uid",token)
-  console.log(userlogged)
   res.redirect("/");
   } else{
     return res.render("logIn.ejs",{
@@ -89,7 +89,6 @@ async function loginRoute(req, res) {
     })
   }
 } catch (err) {
-    console.error(err);
     res.status(500).send('Internal Server Error');
   }
 }

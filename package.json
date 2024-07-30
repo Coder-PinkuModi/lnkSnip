@@ -21,9 +21,9 @@
     "lru-cache": "^11.0.0",
     "mongoose": "^8.4.4",
     "mongoose-nanoid": "^2.1.5",
+    "node-cron": "^3.0.3",
     "nodemailer": "^6.9.14",
     "rimraf": "^6.0.1",
-    "util": "^0.12.5",
-    "winston": "^3.13.1"
+    "util": "^0.12.5"
   }
 }

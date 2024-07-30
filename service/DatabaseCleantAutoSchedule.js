@@ -1,11 +1,12 @@
+import cron from "node-cron"
 import usermodel from '../models/usersmodel.js';
 
 async function scheduleDatabseCleanUpJobs() {
-  const interval = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+  const tokenExpiration = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
-  setInterval(async () => {
+  // Schedule the task to run every 24 hours
+  cron.schedule('0 0 * * *', async () => { // '0 0 * * *' cron expression means every day at midnight
     const now = Date.now();
-    const tokenExpiration = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
     try {
       const userNotVerified = await usermodel.find({ verified: false });
@@ -15,11 +16,9 @@ async function scheduleDatabseCleanUpJobs() {
           await usermodel.deleteOne({ _id: oneUser._id });
         }
       });
-      console.log(`Expires tokens cleaned up`);
     } catch (err) {
-      console.log(`Error during cleanup: `, err);
     }
-  }, interval);
+  });
 }
 
 

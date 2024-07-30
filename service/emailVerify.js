@@ -19,7 +19,7 @@ async function sendVerificationEmail(email, verificationToken) {
     });
 
     // Define email content
-    const verificationLink = `http://${process.env.WEBSITE_DOOMAIN}/api/verifyEmail/${verificationToken}`;
+    const verificationLink = `https://lnksnip.onrender.com/api/verifyEmail/${verificationToken}`;
     const mail = {
       from: '"LnkSnip "lnksnip.dev@gmail.com', // Replace with your sender information
       to: email,
@@ -31,9 +31,8 @@ async function sendVerificationEmail(email, verificationToken) {
     // Send email
     const info = await transporter.sendMail(mail);
 
-    console.log("Email sent: %s", info.response);
   } catch (error) {
-    console.error("Error sending email:", error);
+    res.render("/login",error)
   }
 }
 

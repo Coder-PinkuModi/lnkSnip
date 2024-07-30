@@ -16,7 +16,6 @@ async function verifyJWTEmail(token) {
       return decoded; // Returns decoded payload if valid
     } catch (error) {
       // Handle JWT verification errors (e.g., expired token, invalid signature)
-      console.error("Error verifying JWT:", error.message);
       return null; // Or throw an error depending on your application logic
     }
   }

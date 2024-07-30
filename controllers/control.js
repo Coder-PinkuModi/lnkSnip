@@ -34,16 +34,13 @@ async function createId(req, res) {
 
     res.status(201).redirect("/");
   } catch (error) {
-    console.error("Error creating short URL:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 }
 
 async function redirectWeb(req, res) {
-  console.log(req.params.shortid);
   const shortId = req.params.shortid;
   const shortUrl = await modelss.findOne({ shortId }); //correct field name is necessary as it will match with the model of the schema using for the datatbase of the particular collection
-  console.log(shortUrl);
   if (!shortUrl) {
     return res.status(404).json({ error: "Short URL not found" });
   }
