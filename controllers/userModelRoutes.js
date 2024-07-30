@@ -39,17 +39,17 @@ async function createUser(req, res) {
         email:email,
         password:hashedPassword,
       })
-      res.status(201).render("signUpsuccessful.ejs");
+      return res.status(201).render("signUpsuccessful.ejs");
     } else {
-      res.render("signUp", {
+      return res.render("signUp", {
         error: "Your entered passwords don't match",
       });
     }
   } catch (error) {
     if (error.code === 11000) {
-      res.status(400).send("Duplicate key error: " + error.message);
+      return res.status(400).send("Duplicate key error: " + error.message);
     } else {
-      res.status(500).send("Error creating user: " + error.message);
+      return res.status(500).send("Error creating user: " + error.message);
     }
   }
 }
@@ -78,7 +78,7 @@ async function loginRoute(req, res) {
   
   if(hashPassword){
 
-    if(userlogged.verified==false){ return res.render("login",{error:"First verify your email, by the link send in mail"})}
+    if(userlogged.verified==false){ return res.render("logIn.ejs",{error:"First verify your email, by the link send in mail"})}
 
   const token=setUser(userlogged)
   res.cookie("uid",token)
