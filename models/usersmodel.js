@@ -20,13 +20,11 @@ const userModels=new mongoose.Schema({
 },{timestamps:true})
 
 userModels.pre('save', async function(next) {
-    // Check if user is newly created and email verification is not bypassed
   if (this.isNew && !this.verified) {
-    // Generate a verification token (you'll need a separate function for this)
+    console.log(this.email)
     const verificationToken = generateVerificationEmailToken(this.email);
     this.verificationToken = verificationToken;
 
-    // Send email verification email (you'll need a separate function for this)
     await sendVerificationEmail(this.email, verificationToken);
   }
     

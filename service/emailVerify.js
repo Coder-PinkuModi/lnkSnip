@@ -7,7 +7,6 @@ import nodemailer from "nodemailer";
 
 async function sendVerificationEmail(email, verificationToken) {
   try {
-    // Replace with your actual email configuration (username, password, etc.)
     const transporter = nodemailer.createTransport({
       host: process.env.HOSTSMTP_KEY,
       port: process.env.SMTPPROT_KEY,
@@ -18,7 +17,6 @@ async function sendVerificationEmail(email, verificationToken) {
       },
     });
 
-    // Define email content
     const verificationLink = `https://lnksnip.onrender.com/api/verifyEmail/${verificationToken}`;
     const mail = {
       from: '"LnkSnip "lnksnip.dev@gmail.com', // Replace with your sender information

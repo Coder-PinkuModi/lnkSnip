@@ -3,6 +3,7 @@ import usermodel from '../models/usersmodel.js';
 
 async function emailVerificationValidator(req,res){
     const token=req.params.token
+    console.log(token)
     const userToken=verifyJWTEmail(token)
 
     const user = await usermodel.findOne({email: userToken.email})

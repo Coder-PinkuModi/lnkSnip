@@ -13,9 +13,8 @@ function generateVerificationEmailToken(email){
 async function verifyJWTEmail(token) {
     try {
       const decoded = jwt.verify(token, secretKey);
-      return decoded; // Returns decoded payload if valid
+      return decoded; 
     } catch (error) {
-      // Handle JWT verification errors (e.g., expired token, invalid signature)
       return null; // Or throw an error depending on your application logic
     }
   }

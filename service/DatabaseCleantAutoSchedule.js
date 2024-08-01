@@ -2,10 +2,9 @@ import cron from "node-cron"
 import usermodel from '../models/usersmodel.js';
 
 async function scheduleDatabseCleanUpJobs() {
-  const tokenExpiration = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+  const tokenExpiration = 24 * 60 * 60 * 1000; 
 
-  // Schedule the task to run every 24 hours
-  cron.schedule('0 0 * * *', async () => { // '0 0 * * *' cron expression means every day at midnight
+  cron.schedule('0 0 * * *', async () => { 
     const now = Date.now();
 
     try {
