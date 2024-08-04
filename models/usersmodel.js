@@ -21,7 +21,7 @@ const userModels=new mongoose.Schema({
 
 userModels.pre('save', async function(next) {
   if (this.isNew && !this.verified) {
-    console.log(this.email)
+
     const verificationToken = generateVerificationEmailToken(this.email);
     this.verificationToken = verificationToken;
 
