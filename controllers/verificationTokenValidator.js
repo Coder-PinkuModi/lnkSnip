@@ -3,7 +3,7 @@ import usermodel from "../models/usersmodel.js";
 
 async function emailVerificationValidator(req, res) {
   const token = req.params.token;
-  console.log(token);
+  
   const userToken = await verifyJWTEmail(token);
 
   if (!userToken) return res.json({ error: "Invalid Request" });
