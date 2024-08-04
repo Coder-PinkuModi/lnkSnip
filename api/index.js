@@ -39,13 +39,13 @@ app.get("/login",signinPage)
 app.get('/logout', (req, res) => {
     // Clear the JWT token from cookies
 
-    console.log("user logged out")
-    res.clearCookie('jwt',{
+    res.clearCookie('uid',{
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'strict',
         path: '/',
     });
+    console.log("user logged out")
     
     // Redirect to home or login page
     res.redirect('/');
