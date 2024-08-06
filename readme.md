@@ -39,17 +39,17 @@ lnkSnip is a URL shortening service that allows users to create short, easy-to-s
 
 - **GET /api:** Access API routes.
 
-**GET /:** Homepage, accessible only when authenticated.
+- **GET /:** Homepage, accessible only when authenticated.
 
-**GET /signup:** Sign-up page.
+- **GET /signup:** Sign-up page.
 
-*GET /login:* Login page.
+- **GET /login:** Login page.
 
--- GET /about: About page.
+- **GET /about:** About page.
 
 - **GET /logout:** Logout and clear JWT token.
 
--- *GET /:shortId :*Redirect to the original URL.
+- **GET /:shortId :** Redirect to the original URL.
 
 ## Deployment
 
