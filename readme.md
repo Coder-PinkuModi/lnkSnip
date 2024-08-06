@@ -37,7 +37,7 @@ lnkSnip is a URL shortening service that allows users to create short, easy-to-s
 
 ## API Endpoints
 
-**GET /api:** Access API routes.
+- **GET /api:** Access API routes.
 
 **GET /:** Homepage, accessible only when authenticated.
 
@@ -47,7 +47,7 @@ lnkSnip is a URL shortening service that allows users to create short, easy-to-s
 
 -- GET /about: About page.
 
--- **GET /logout:** Logout and clear JWT token.
+- **GET /logout:** Logout and clear JWT token.
 
 -- *GET /:shortId :*Redirect to the original URL.
 
