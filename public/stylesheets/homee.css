@@ -6,6 +6,7 @@
 
 html,
 body {
+    width:100vw;
     position: relative;
     align-items: center;
     background-color: #f9f233 !important;
