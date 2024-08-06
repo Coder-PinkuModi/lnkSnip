@@ -1,8 +1,7 @@
 import express from "express"
-import jwt from "jsonwebtoken"
 import modelss from "../models/models.js"
 import usermodel from "../models/usersmodel.js";
-
+import {getUser} from "../service/auth.js"
 const app= express()
 
 async function homepage(req,res){
@@ -35,5 +34,21 @@ async function signupPage(req,res){
     return res.render("signUp")
 }
 
+async function aboutPage(req,res){
 
-export { homepage, signinPage, signupPage }
+    const userUid = req.cookies?.uid;
+    if(!userUid)  
+        return res.render("aboutPage")
+
+    const userVerify= getUser(userUid)
+
+    const user= await usermodel.findOne({email: userVerify.email})
+    if(user){
+        return res.render("aboutPage",{
+            name: user.name
+        })
+    }
+
+}
+
+export { homepage, signinPage, signupPage, aboutPage }

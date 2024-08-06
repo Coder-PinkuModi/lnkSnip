@@ -6,7 +6,6 @@ import { emailVerificationValidator } from "../controllers/verificationTokenVali
 const router= express.Router();
 
 router.post("/createId",  createId);
-router.get("/:shortid",redirectWeb)
 router.post("/signup",createUser)
 router.post("/login",loginRoute)
 router.get("/verifyEmail/:token",emailVerificationValidator)
