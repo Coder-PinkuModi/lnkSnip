@@ -453,10 +453,16 @@ body {
         font-size: 15px;
     }
     .tutorial-paragraph{
-        background-color: #f8f9fa;
         font-size: 5px;
     }
     .tutorial-paragraph ul li video{
         display: hidden;
 }
+}
+
+@media(max-width:475px) {
+    .hidden-on-small{
+        display:none !important;
+        background-color: transparent !important;
+    }
 }
