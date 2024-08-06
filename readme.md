@@ -59,7 +59,7 @@ Open a pull request.
 
 ## Contact
 
-For any inquiries, please reach out to [Pinku Modi](mailto:pinku@example.com)
+For any inquiries, please reach out to [Pinku Modi](mailto:codemines8@gmail.com)
 
 
 ## Website
