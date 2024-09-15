@@ -10,12 +10,13 @@ async function scheduleDatabseCleanUpJobs() {
     try {
       const userNotVerified = await usermodel.find({ verified: false });
 
-      userNotVerified.forEach(async (oneUser) => {
+      for (const oneUser of userNotVerified) { // Use for...of loop for async/await
         if (now - new Date(oneUser.createdAt).getTime() > tokenExpiration) {
           await usermodel.deleteOne({ _id: oneUser._id });
         }
-      });
+      }
     } catch (err) {
+      console.log(err)
     }
   });
 }
